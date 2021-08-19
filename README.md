@@ -14,6 +14,19 @@ Pain points:
 - Many of these existing providers don't integrate cryptocurrency.
 - Providers aren't distributed and suffer downsides of existing centralized platforms (vendor lock in, variable pricing, outages, credit card fees)
 
+### How IPFS is used
+
+- IPFS provides a distributed datastore for all the storefront images and assets.
+- Each storefront URL is routed based on the IPFS cid (which represents the unique storefront id).
+- The cid contains a single `info.json` file which contains a reference to a ceramic stream ID.
+- For the storefront metadata, <a href="http://ceramic.network/" target="_blank">Ceramic</a> is used as a mutable nosql store. This is leveraged for product information and descriptions (in the future could also include inventory).
+
+### Challenges
+
+- Integrating multiple blockchain service providers into a single application.
+- web3.storage worked well for saving and retrieving documents. Mutation was one limitation, hence Ceramic was used to support this functionality.
+- Some challenges remain integrating user authentication and securing API keys (ex: web3 storage key is still client side).
+
 ### Features
 
 - Discover existing catalogs and menus. Use the the IPFS cid as the primary key for storefront access.
@@ -25,7 +38,7 @@ Pain points:
 
 ### Technologies used
 
-- IPFS and Protocol labs (Hosting and sharing of assets): IPFS and Filecoin are the primary drivers making CheckoutFS possible. Using web3.storage, a storefront or product page creator can host a distributed menu or catalog of items available for purchase with cryptocurrency.
+- IPFS and Protocol labs (persistence of storefront assets): IPFS and Filecoin are the primary drivers making CheckoutFS possible. Using web3.storage, a storefront or product page creator can host a distributed menu or catalog of items available for purchase with cryptocurrency.
 - Pillar (payments and wallet creation for uploaders) \* Enables wallet generation and onboarding for businesses that may not have crypto accounts already. Pillar exists on the wallet page and is integrated live to validate that a customer's web3 wallet is ready to accept payments. Pillar is also leveragable for the checkout process which would need further development.
 - Unlock Protocol (purchasing): Provides cryptocurrency gateway to enable visitors/customers to purchase items from the checkout page. https://app.unlock-protocol.com/dashboard
 - Audius: Music sharing and content listings. Audius API is integrated into the product for musicians to be able to sell rights/use to their music through catalog pages. Lookup any playlist ID and get an instant page.
@@ -77,6 +90,8 @@ Demo flow:
 - Email integration via fluence backend.
 - IPNS publishing and fully custom domains.
 - App prototype currently demoed on rinkeby, additional testing and implementation will be required for mainnet usage.
+- Add backend service for emailing.
+- Enforce fulfill or delivery of non-digital assets. This project would start with digital products and expand into physical products after success with digital product delivery (music, movies, NFT's) was validated.
 
 ## Screenshots
 
