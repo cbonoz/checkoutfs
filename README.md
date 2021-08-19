@@ -26,6 +26,7 @@ Pain points:
 - Integrating multiple blockchain service providers into a single application.
 - web3.storage worked well for saving and retrieving documents. Mutation was one limitation, hence Ceramic was used to support this functionality.
 - Some challenges remain integrating user authentication and securing API keys (ex: web3 storage key is still client side).
+- Unlock protocol would need to be updated server side to work for different pricing, for the sake of the hackathon, this is set to .01 eth.
 
 ### Features
 
